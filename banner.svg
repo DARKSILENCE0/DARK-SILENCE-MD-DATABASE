@@ -2,23 +2,39 @@
 
   <defs>
 
-    <!-- Dark premium background -->
+    <!-- Background gradient -->
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#040404"/>
-      <stop offset="50%" stop-color="#0b0b0b"/>
-      <stop offset="100%" stop-color="#070707"/>
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#0c0c0c"/>
     </linearGradient>
 
     <!-- Neon gradient -->
     <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00ffcc"/>
-      <stop offset="50%" stop-color="#00d4ff"/>
-      <stop offset="100%" stop-color="#00ffcc"/>
+      <stop offset="0%" stop-color="#00ffcc">
+        <animate attributeName="stop-color" values="#00ffcc;#00aaff;#00ffcc" dur="4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#00aaff">
+        <animate attributeName="stop-color" values="#00aaff;#00ffcc;#00aaff" dur="4s" repeatCount="indefinite"/>
+      </stop>
     </linearGradient>
 
-    <!-- Soft glow -->
+    <!-- Glow effect -->
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft pulse -->
+    <filter id="pulse">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feColorMatrix type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.8 0"/>
       <feMerge>
         <feMergeNode in="b"/>
         <feMergeNode in="SourceGraphic"/>
@@ -30,58 +46,50 @@
   <!-- Background -->
   <rect width="1000" height="300" fill="url(#bg)"/>
 
-  <!-- Subtle grid lines -->
-  <g opacity="0.06" stroke="#00ffcc">
-    <path d="M0 60 H1000"/>
-    <path d="M0 120 H1000"/>
-    <path d="M0 180 H1000"/>
-    <path d="M0 240 H1000"/>
-  </g>
+  <!-- Animated corner lights -->
+  <circle cx="50" cy="50" r="6" fill="#00ffcc" filter="url(#glow)">
+    <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+  </circle>
 
-  <!-- Moving scan line -->
-  <rect x="-200" y="60" width="200" height="2" fill="#00ffcc" opacity="0.4">
-    <animate attributeName="x" from="-200" to="1000" dur="4s" repeatCount="indefinite"/>
-  </rect>
+  <circle cx="950" cy="50" r="6" fill="#00aaff" filter="url(#glow)">
+    <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+  </circle>
 
-  <!-- Main frame -->
-  <rect x="120" y="75" width="760" height="150" rx="20"
-        fill="none" stroke="url(#neon)" stroke-width="2.5"
-        filter="url(#glow)">
+  <circle cx="50" cy="250" r="6" fill="#00aaff" filter="url(#glow)">
+    <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="950" cy="250" r="6" fill="#00ffcc" filter="url(#glow)">
+    <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Main neon box -->
+  <rect x="120" y="70" width="760" height="160" rx="18"
+        fill="none" stroke="url(#neon)" stroke-width="3"
+        filter="url(#pulse)">
+
+    <animate attributeName="stroke-width"
+             values="2;4;2" dur="3s"
+             repeatCount="indefinite"/>
   </rect>
 
   <!-- Title -->
   <text x="500" y="140" text-anchor="middle"
-        font-size="40" fill="#00ffcc"
+        font-size="44" fill="#00ffcc"
         font-family="Verdana"
         filter="url(#glow)">
     DARK-SILENCE-MD
   </text>
 
   <!-- Subtitle -->
-  <text x="500" y="185" text-anchor="middle"
-        font-size="17" fill="#cfcfcf" opacity="0.9">
+  <text x="500" y="190" text-anchor="middle"
+        font-size="18" fill="#ffffff" opacity="0.85">
     POWERED BY SILENTLOVER ❤️
   </text>
 
-  <!-- Minimal snow (soft premium effect) -->
-  <g fill="#ffffff" opacity="0.6">
-
-    <circle cx="150" cy="30" r="2">
-      <animate attributeName="cy" values="0;320" dur="6s" repeatCount="indefinite"/>
-    </circle>
-
-    <circle cx="400" cy="10" r="1.8">
-      <animate attributeName="cy" values="0;320" dur="5s" repeatCount="indefinite"/>
-    </circle>
-
-    <circle cx="650" cy="25" r="2">
-      <animate attributeName="cy" values="0;320" dur="7s" repeatCount="indefinite"/>
-    </circle>
-
-    <circle cx="850" cy="15" r="1.5">
-      <animate attributeName="cy" values="0;320" dur="5.5s" repeatCount="indefinite"/>
-    </circle>
-
-  </g>
+  <!-- Moving light line -->
+  <rect x="-200" y="60" width="200" height="3" fill="#00ffcc" opacity="0.5">
+    <animate attributeName="x" from="-200" to="1000" dur="3s" repeatCount="indefinite"/>
+  </rect>
 
 </svg>
