@@ -1,176 +1,95 @@
 <svg width="1400" height="500" viewBox="0 0 1400 500" xmlns="http://www.w3.org/2000/svg">
+
   <defs>
-    <!-- WhatsApp Green Gradient -->
-    <linearGradient id="whatsapp-green" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#25D366"/>
-      <stop offset="50%" stop-color="#128C7E"/>
-      <stop offset="100%" stop-color="#075E54"/>
+
+    <!-- Soft Dark Background -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050607"/>
+      <stop offset="100%" stop-color="#0c0f12"/>
     </linearGradient>
 
-    <!-- Glassmorphism Background -->
-    <linearGradient id="glass-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.1)"/>
-      <stop offset="50%" stop-color="rgba(255,255,255,0.05)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0.02)"/>
+    <!-- Soft Neon -->
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00aaff"/>
     </linearGradient>
 
-    <!-- Neon Glow -->
-    <linearGradient id="neon-glow" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#00FF88"/>
-      <stop offset="50%" stop-color="#00CCFF"/>
-      <stop offset="100%" stop-color="#FF6B9D"/>
-    </linearGradient>
-
-    <!-- WhatsApp Icon Gradient -->
-    <radialGradient id="wa-icon" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#25D366"/>
-      <stop offset="70%" stop-color="#128C7E"/>
-      <stop offset="100%" stop-color="#075E54"/>
-    </radialGradient>
-
-    <!-- Advanced Glow Filter -->
-    <filter id="whatsapp-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#25D366" flood-opacity="0.6"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00FF88" flood-opacity="0.8"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#FFFFFF" flood-opacity="0.4"/>
-    </filter>
-
-    <!-- Glassmorphism Blur -->
-    <filter id="glass-blur">
-      <feGaussianBlur stdDeviation="15" result="blur"/>
-      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"/>
-    </filter>
-
-    <!-- Floating Particles -->
-    <pattern id="particles" width="80" height="80" patternUnits="userSpaceOnUse">
-      <circle cx="15" cy="15" r="1.2" fill="#25D366" opacity="0.6">
-        <animate attributeName="cy" values="15;5;15" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="65" cy="25" r="0.8" fill="#00FF88" opacity="0.4">
-        <animate attributeName="cy" values="25;10;25" dur="2.5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="40" cy="60" r="1" fill="#FF6B9D" opacity="0.5">
-        <animate attributeName="cy" values="60;40;60" dur="3.5s" repeatCount="indefinite"/>
-      </circle>
-    </pattern>
-
-    <!-- Text Glow -->
-    <filter id="text-glow">
-      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#00FF88"/>
+    <!-- Soft Glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
 
   </defs>
 
-  <!-- Dark Gradient Background -->
-  <rect width="1400" height="500" fill="#0F1419"/>
+  <!-- Background -->
+  <rect width="1400" height="500" fill="url(#bg)"/>
 
-  <!-- Floating Particles Overlay -->
-  <rect width="1400" height="500" fill="url(#particles)" opacity="0.3"/>
+  <!-- MAIN GLASS CARD -->
+  <rect x="300" y="120" width="800" height="260" rx="25"
+        fill="rgba(255,255,255,0.04)"
+        stroke="rgba(0,255,204,0.3)"
+        stroke-width="1.5"
+        filter="url(#glow)"/>
 
-  <!-- WhatsApp Phone Mockup -->
-  <g transform="translate(100, 80)" filter="url(#glass-blur)">
-    <!-- Phone Outer -->
-    <rect x="0" y="0" width="320" height="580" rx="35" fill="#1A1F27" stroke="#25D366" stroke-width="3"/>
-    
-    <!-- Phone Screen Glass -->
-    <rect x="8" y="25" width="304" height="530" rx="25" fill="url(#glass-bg)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-    
-    <!-- Screen Content Background -->
-    <rect x="20" y="45" width="280" height="490" rx="20" fill="rgba(15,20,25,0.95)"/>
-  </g>
-
-  <!-- WhatsApp Icon (Animated) -->
-  <g transform="translate(170, 140)" filter="url(#whatsapp-glow)">
-    <!-- WA Bubble -->
-    <ellipse cx="130" cy="110" rx="90" ry="85" fill="url(#wa-icon)" stroke="#FFFFFF" stroke-width="2">
-      <animate attributeName="rx" values="90;95;90" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="ry" values="85;90;85" dur="2s" repeatCount="indefinite"/>
-    </ellipse>
-    
-    <!-- WA Checkmark -->
-    <path d="M80 130 L105 155 L170 90" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <animate attributeName="stroke-dasharray" values="0,300;300,0" dur="2s" repeatCount="indefinite"/>
-      <animateTransform attributeName="transform" type="rotate" values="0 130 110; 360 130 110" dur="10s" repeatCount="indefinite"/>
-    </path>
-  </g>
-
-  <!-- Main Glass Card -->
-  <g transform="translate(480, 120)">
-    <!-- Glass Background -->
-    <rect x="0" y="0" width="880" height="260" rx="30" fill="url(#glass-bg)" filter="url(#glass-blur)" stroke="url(#neon-glow)" stroke-width="2"/>
-    
-    <!-- Glass Border Glow -->
-    <rect x="5" y="5" width="870" height="250" rx="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-  </g>
-
-  <!-- MAIN TITLE - Professional Typography -->
-  <text x="920" y="195" text-anchor="middle" dominant-baseline="middle"
-        font-size="68" font-weight="800" fill="url(#whatsapp-green)"
-        font-family="'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif"
-        filter="url(#text-glow)" letter-spacing="-1">
-    SSMD
+  <!-- TITLE -->
+  <text x="700" y="220"
+        text-anchor="middle"
+        font-size="64"
+        fill="url(#neon)"
+        font-family="Arial, sans-serif"
+        font-weight="600"
+        letter-spacing="2"
+        filter="url(#glow)">
+    DARK-SILENCE-MD
   </text>
 
-  <!-- Subtitle -->
-  <text x="920" y="245" text-anchor="middle" dominant-baseline="middle"
-        font-size="24" font-weight="600" fill="#E4E6EA"
-        font-family="'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif"
-        letter-spacing="0.5">
-    WhatsApp GPT Bot
+  <!-- SUBTITLE -->
+  <text x="700" y="270"
+        text-anchor="middle"
+        font-size="20"
+        fill="#cfd6dd"
+        font-family="Arial, sans-serif"
+        opacity="0.9">
+    WhatsApp AI Bot • Smooth Cyber Edition
   </text>
 
-  <!-- Features Badges -->
-  <g font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="16">
-    <!-- Feature 1 -->
-    <g transform="translate(520, 160)">
-      <circle cx="0" cy="0" r="20" fill="#25D366" filter="url(#whatsapp-glow)"/>
-      <text x="28" y="6" fill="#FFFFFF">🤖 AI Chat</text>
-    </g>
-    
-    <!-- Feature 2 -->
-    <g transform="translate(720, 160)">
-      <circle cx="0" cy="0" r="20" fill="#00FF88" filter="url(#whatsapp-glow)"/>
-      <text x="28" y="6" fill="#FFFFFF">⚡ Fast</text>
-    </g>
-    
-    <!-- Feature 3 -->
-    <g transform="translate(520, 220)">
-      <circle cx="0" cy="0" r="20" fill="#FF6B9D" filter="url(#whatsapp-glow)"/>
-      <text x="28" y="6" fill="#FFFFFF">🔒 Secure</text>
-    </g>
-    
-    <!-- Feature 4 -->
-    <g transform="translate(720, 220)">
-      <circle cx="0" cy="0" r="20" fill="#00CCFF" filter="url(#whatsapp-glow)"/>
-      <text x="28" y="6" fill="#FFFFFF">🌐 24/7</text>
-    </g>
+  <!-- STATUS BAR (Phone Style) -->
+  <g font-family="Arial, sans-serif" font-size="14" fill="#e6e6e6">
+
+    <rect x="350" y="70" width="700" height="35" rx="18"
+          fill="rgba(255,255,255,0.05)"
+          stroke="rgba(255,255,255,0.08)"/>
+
+    <!-- Time -->
+    <text x="380" y="93">12:45 PM</text>
+
+    <!-- Network -->
+    <text x="520" y="93">📶 LTE</text>
+
+    <!-- Date -->
+    <text x="620" y="93">16 Apr 2026</text>
+
+    <!-- Battery -->
+    <text x="900" y="93">🔋 87%</text>
+
   </g>
 
-  <!-- Status Bar -->
-  <g transform="translate(500, 50)">
-    <rect x="0" y="0" width="380" height="30" rx="15" fill="rgba(37,211,102,0.2)" stroke="#25D366" stroke-width="1.5"/>
-    <circle cx="25" cy="15" r="8" fill="#25D366">
-      <animate attributeName="r" values="6;10;8" dur="1.5s" repeatCount="indefinite"/>
-    </circle>
-    <text x="45" y="20" font-size="14" font-weight="600" fill="#25D366" font-family="'Inter', sans-serif">● ONLINE</text>
-    <text x="200" y="20" font-size="14" fill="#E4E6EA" font-family="'Inter', sans-serif">SSMD v4.2.1</text>
+  <!-- SOFT FLOATING DOTS (LIGHT ANIMATION FEEL) -->
+  <g fill="#00ffcc" opacity="0.4">
+    <circle cx="200" cy="150" r="2"/>
+    <circle cx="1200" cy="180" r="1.8"/>
+    <circle cx="250" cy="380" r="2.2"/>
+    <circle cx="1150" cy="350" r="1.5"/>
   </g>
 
-  <!-- Bottom Gradient Wave -->
-  <path d="M0 450 Q200 420 400 450 T800 450 T1200 450 L1400 500 L0 500 Z" 
-        fill="url(#whatsapp-green)" opacity="0.15">
-    <animate attributeName="d" values="
-      M0 450 Q200 420 400 450 T800 450 T1200 450 L1400 500 L0 500 Z;
-      M0 450 Q300 430 500 440 T900 455 T1200 450 L1400 500 L0 500 Z;
-      M0 450 Q100 425 300 445 T700 450 T1200 450 L1400 500 L0 500 Z;
-      M0 450 Q200 420 400 450 T800 450 T1200 450 L1400 500 L0 500 Z
-    " dur="8s" repeatCount="indefinite"/>
-  </path>
-
-  <!-- Developer Credit -->
-  <text x="700" y="485" text-anchor="middle" font-size="14" fill="#B0B3B8" 
-        font-family="'Inter', system-ui, sans-serif" font-weight="500">
-    Made with ❤️ by SILENTLOVER043
-  </text>
+  <!-- Bottom glow line -->
+  <rect x="450" y="340" width="500" height="2"
+        fill="url(#neon)" opacity="0.5">
+    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/>
+  </rect>
 
 </svg>
